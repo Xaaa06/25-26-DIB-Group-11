@@ -1,0 +1,364 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Feb 28, 2026 at 12:49 AM
+-- Server version: 5.7.24
+-- PHP Version: 8.3.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `comp1044_database`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assessments`
+--
+
+CREATE TABLE `assessments` (
+  `assessment_id` int(11) NOT NULL,
+  `internship_id` int(11) NOT NULL,
+  `undertaking_tasks` decimal(4,2) NOT NULL,
+  `health_safety` decimal(4,2) NOT NULL,
+  `theory_use` decimal(4,2) NOT NULL,
+  `report_presentation` decimal(4,2) NOT NULL,
+  `language_clarity` decimal(4,2) NOT NULL,
+  `lifelong_learning` decimal(4,2) NOT NULL,
+  `project_management` decimal(4,2) NOT NULL,
+  `time_management` decimal(4,2) NOT NULL,
+  `final_score` decimal(5,2) NOT NULL,
+  `comments` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `assessments`
+--
+
+INSERT INTO `assessments` (`assessment_id`, `internship_id`, `undertaking_tasks`, `health_safety`, `theory_use`, `report_presentation`, `language_clarity`, `lifelong_learning`, `project_management`, `time_management`, `final_score`, `comments`) VALUES
+(6, 1, 85.50, 88.00, 82.75, 86.25, 84.00, 87.50, 83.00, 89.00, 85.50, 'The student demonstrated strong professional competence throughout the internship period. Responsibilities were handled efficiently with clear understanding of theoretical knowledge and practical application. Communication skills were effective, and time management was consistent. The student showed initiative, adaptability, and willingness to learn, contributing positively to the organization and overall project outcomes.'),
+(7, 2, 78.00, 80.50, 76.25, 82.00, 79.50, 81.00, 77.75, 83.00, 79.75, 'The student performed duties satisfactorily and maintained professional standards during the internship. Assigned tasks were completed responsibly with adequate understanding of workplace expectations. Communication and presentation skills were clear and structured. The student demonstrated steady progress, reliability, and a positive attitude toward continuous improvement and collaboration with team members.'),
+(8, 3, 90.00, 92.50, 88.75, 91.00, 89.50, 93.00, 87.50, 90.25, 90.81, 'An excellent performance was observed throughout the internship duration. The student consistently applied theoretical knowledge effectively in practical situations and maintained high standards in communication and reporting. Strong analytical skills, leadership potential, and efficient time management were evident. The student contributed meaningfully to projects and exceeded expectations in professional conduct.'),
+(9, 4, 74.50, 76.00, 72.25, 78.00, 75.00, 79.50, 73.75, 77.00, 75.00, 'The student showed satisfactory competency in fulfilling assigned responsibilities and maintained appropriate workplace behavior. Tasks were completed with reasonable understanding and attention to detail. Communication skills were clear, and collaboration with colleagues was positive. Continued development in analytical depth and independent problem solving is encouraged for future professional growth.'),
+(10, 5, 88.00, 85.75, 84.50, 89.25, 87.00, 90.00, 86.25, 88.50, 87.91, 'The student demonstrated high commitment and strong capability in executing internship responsibilities. Work quality was consistent, with effective application of theoretical knowledge to real-world scenarios. Communication, presentation, and organizational skills were well developed. The student exhibited professionalism, initiative, and a proactive approach toward learning and continuous improvement.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `internships`
+--
+
+CREATE TABLE `internships` (
+  `internship_id` int(11) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
+  `assessor_id` int(11) NOT NULL,
+  `company_name` varchar(150) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `internships`
+--
+
+INSERT INTO `internships` (`internship_id`, `student_id`, `assessor_id`, `company_name`, `start_date`, `end_date`) VALUES
+(1, '20676720', 4, 'Apple', '2026-01-01', '2026-04-01'),
+(2, '20679455', 4, 'Microsoft', '2026-01-15', '2026-03-15'),
+(3, '20690412', 4, 'Google', '2026-02-01', '2026-06-01'),
+(4, '20690663', 4, 'Amazon', '2026-02-15', '2026-05-15'),
+(5, '20701943', 4, 'Coca-Cola', '2026-03-01', '2026-07-01'),
+(6, '20703441', 4, 'Nike', '2026-03-10', '2026-06-10'),
+(7, '20705227', 4, 'Samsung', '2026-04-01', '2026-07-01'),
+(8, '20705238', 4, 'Toyota', '2026-04-15', '2026-08-15'),
+(9, '20705302', 4, 'McDonald\'s', '2026-05-01', '2026-08-01'),
+(10, '20705375', 4, 'Tesla', '2026-05-10', '2026-09-10'),
+(11, '20708827', 4, 'Apple', '2026-06-01', '2026-09-01'),
+(12, '20710895', 4, 'Microsoft', '2026-06-15', '2026-10-15'),
+(13, '20711344', 4, 'Google', '2026-07-01', '2026-10-01'),
+(14, '20711677', 4, 'Amazon', '2026-07-10', '2026-09-10'),
+(15, '20712542', 4, 'Coca-Cola', '2026-08-01', '2026-11-01'),
+(16, '20713963', 4, 'Nike', '2026-08-15', '2026-12-15'),
+(17, '20714943', 4, 'Samsung', '2026-09-01', '2026-12-01'),
+(18, '20715075', 4, 'Toyota', '2026-09-10', '2026-12-10'),
+(19, '20715200', 4, 'Tesla', '2026-10-01', '2026-12-31'),
+(20, '20715271', 4, 'Apple', '2026-01-05', '2026-04-05'),
+(21, '20716103', 5, 'Microsoft', '2026-01-10', '2026-05-10'),
+(22, '20717402', 5, 'Google', '2026-02-01', '2026-06-01'),
+(23, '20749006', 5, 'Amazon', '2026-02-15', '2026-05-15'),
+(24, '20780335', 5, 'Coca-Cola', '2026-03-01', '2026-07-01'),
+(25, '20782788', 5, 'Nike', '2026-03-15', '2026-06-15'),
+(26, '20791953', 5, 'Samsung', '2026-04-01', '2026-08-01'),
+(27, '20792131', 5, 'Toyota', '2026-04-15', '2026-07-15'),
+(28, '20792685', 5, 'Tesla', '2026-05-01', '2026-09-01'),
+(29, '20793088', 5, 'Apple', '2026-05-10', '2026-08-10'),
+(30, '20795326', 5, 'Microsoft', '2026-06-01', '2026-09-01'),
+(31, '20796507', 5, 'Google', '2026-06-15', '2026-10-15'),
+(32, '20797433', 5, 'Amazon', '2026-07-01', '2026-11-01'),
+(33, '20797574', 5, 'Coca-Cola', '2026-07-10', '2026-10-10'),
+(34, '20799618', 5, 'Nike', '2026-08-01', '2026-12-01'),
+(35, '20800646', 5, 'Samsung', '2026-08-15', '2026-11-15'),
+(36, '20801522', 5, 'Toyota', '2026-09-01', '2026-12-01'),
+(37, '20803979', 5, 'Tesla', '2026-09-10', '2026-12-10'),
+(38, '20806299', 5, 'Apple', '2026-10-01', '2026-12-31'),
+(39, '20806313', 5, 'Microsoft', '2026-01-20', '2026-04-20'),
+(40, '20806377', 5, 'Google', '2026-02-10', '2026-06-10'),
+(41, '20806629', 6, 'Amazon', '2026-03-01', '2026-06-01'),
+(42, '20806655', 6, 'Coca-Cola', '2026-03-15', '2026-07-15'),
+(43, '20807491', 6, 'Nike', '2026-04-01', '2026-08-01'),
+(44, '20809697', 6, 'Samsung', '2026-04-15', '2026-07-15'),
+(45, '20809748', 6, 'Toyota', '2026-05-01', '2026-09-01'),
+(46, '20809859', 6, 'Tesla', '2026-05-15', '2026-08-15'),
+(47, '20811743', 6, 'Apple', '2026-06-01', '2026-10-01'),
+(48, '20811803', 6, 'Microsoft', '2026-06-15', '2026-09-15'),
+(49, '20812516', 6, 'Google', '2026-07-01', '2026-11-01'),
+(50, '20814150', 6, 'Amazon', '2026-07-10', '2026-10-10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `programmes`
+--
+
+CREATE TABLE `programmes` (
+  `programme_id` varchar(10) NOT NULL,
+  `programme_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `programmes`
+--
+
+INSERT INTO `programmes` (`programme_id`, `programme_name`) VALUES
+('BA1001', 'Education (TESOL)'),
+('BA1002', 'English Language and Literature'),
+('BA1003', 'English with Creative Writing'),
+('BA1004', 'International Communication Studies'),
+('BA1005', 'International Communications Studies with English Language and Literature'),
+('BA1006', 'International Communications Studies with Film and Television Studies'),
+('BA1007', 'International Communications Studies with Performing Arts'),
+('BA1008', 'International Relations'),
+('BA1009', 'International Relations with French'),
+('BA1010', 'International Relations with Spanish'),
+('BEd1001', 'TESOL'),
+('BPharm1001', 'Pharmacy'),
+('BSc1001', 'Business Economics and Finance'),
+('BSc1002', 'Finance, Accounting and Management'),
+('BSc1003', 'Finance, Management and Business Analytics'),
+('BSc1004', 'International Business Management'),
+('BSc1005', 'Economics'),
+('BSc1006', 'Economics and International Economics'),
+('BSc1007', 'Biotechnology'),
+('BSc1008', 'Environmental Science'),
+('BSc1009', 'Nutrition'),
+('BSc1010', 'Computer Science'),
+('BSc1011', 'Computer Science with Artificial Intelligence'),
+('BSc1012', 'Mathematics and Data Science'),
+('BSc1013', 'Biomedical Science'),
+('BSc1014', 'Pharmaceutical and Health Sciences'),
+('BSc1015', 'Applied Psychology and Management'),
+('BSc1016', 'Psychology'),
+('BSc1017', 'Psychology and Cognitive Neuroscience'),
+('MEng1001', 'Chemical Engineering'),
+('MEng1002', 'Chemical Engineering with Environmental Engineering'),
+('MEng1003', 'Civil Engineering'),
+('MEng1004', 'Electrical and Electronic Engineering'),
+('MEng1005', 'Mechatronic Engineering'),
+('MEng1006', 'Mechanical Engineering'),
+('MPharm1001', 'Pharmacy');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `student_id` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `student_name` varchar(100) NOT NULL,
+  `programme_id` varchar(10) NOT NULL,
+  `current_year` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`student_id`, `email`, `student_name`, `programme_id`, `current_year`) VALUES
+('20676720', 'hfyjl36@nottingham.edu.my', 'Jialue Liao', 'BSc1012', 2),
+('20679455', 'hfyma18@nottingham.edu.my', 'Mohamed Hany Mohamed Abdelaziz Abdelmaksoud', 'BSc1014', 3),
+('20690412', 'efyma48@nottingham.edu.my', 'Mariah Azmir Faizal', 'BSc1008', 2),
+('20690663', 'hfyec6@nottingham.edu.my', 'Cheong Ethan', 'BSc1007', 2),
+('20701943', 'hfyjy12@nottingham.edu.my', 'Jun Zhe Yeong', 'BSc1012', 2),
+('20703441', 'hfyjs12@nottingham.edu.my', 'Jia En Sai', 'BSc1017', 3),
+('20705227', 'hfyrg3@nottingham.edu.my', 'Ryan Mustapha Ghulam Mustapha', 'BSc1012', 1),
+('20705238', 'hfyvt2@nottingham.edu.my', 'Valiant Zi Pin Tai', 'BSc1013', 2),
+('20705302', 'hfyhs5@nottingham.edu.my', 'Hin Joong Soo', 'BSc1015', 1),
+('20705375', 'efyhh14@nottingham.edu.my', 'Husam Feras Hosam Boshnaq', 'BSc1014', 1),
+('20708827', 'hfyrl4@nottingham.edu.my', 'Rachel Huey Yen Lee', 'BSc1010', 3),
+('20710895', 'hfyjt17@nottingham.edu.my', 'Jian Yun Tan', 'BSc1016', 2),
+('20711344', 'hfyaw3@nottingham.edu.my', 'Aiko Yi Rou Wong', 'BSc1015', 1),
+('20711677', 'hfywh4@nottingham.edu.my', 'Wei Feng Hue', 'BSc1011', 2),
+('20712542', 'efysf1@nottingham.edu.my', 'Samia Farzana', 'BSc1013', 3),
+('20713963', 'hfysk9@nottingham.edu.my', 'Seann Ryu Hearn Kwan', 'BSc1016', 1),
+('20714943', 'hfylf1@nottingham.edu.my', 'Linjie Fu', 'BSc1011', 1),
+('20715075', 'efyjt32@nottingham.edu.my', 'Jiexun Tang', 'BSc1009', 3),
+('20715200', 'hfyvl4@nottingham.edu.my', 'Venessa Li Ting Looi', 'BSc1007', 3),
+('20715271', 'hfytx1@nottingham.edu.my', 'Xen Xuen Tiew', 'BSc1011', 2),
+('20716103', 'hfyzl16@nottingham.edu.my', 'Zirui Liu', 'BSc1017', 1),
+('20717402', 'hfyhr3@nottingham.edu.my', 'Harshicka Rajalingam', 'BSc1010', 1),
+('20749006', 'hcycz1@nottingham.edu.my', 'Chenhaoxi Zhou', 'MEng1005', 2),
+('20780335', 'hcyfd1@nottingham.edu.my', 'Fathima Sakinah Dil Fairaz', 'BSc1017', 2),
+('20782788', 'hcyrd2@nottingham.edu.my', 'Ruining Ding', 'BSc1009', 3),
+('20791953', 'hcytc2@nottingham.edu.my', 'Tianli Chen', 'BSc1007', 2),
+('20792131', 'hcyhz1@nottingham.edu.my', 'Hengyi Zhao', 'BSc1016', 1),
+('20792685', 'hcyml3@nottingham.edu.my', 'Mingcai Ling', 'BSc1009', 2),
+('20793088', 'hcycd1@nottingham.edu.my', 'Changhui Deng', 'BSc1007', 1),
+('20795326', 'hcyjw3@nottingham.edu.my', 'Jinbo Wang', 'MEng1002', 3),
+('20796507', 'hcyyx2@nottingham.edu.my', 'Yifei Xie', 'MEng1004', 1),
+('20797433', 'hcykz2@nottingham.edu.my', 'Kaining Zuo', 'BSc1014', 1),
+('20797574', 'hcyxz2@nottingham.edu.my', 'Xinyi Zhong', 'BSc1015', 1),
+('20799618', 'hcymq1@nottingham.edu.my', 'Muhammad Hamdaan Qureshi', 'BSc1008', 3),
+('20800646', 'hcysc4@nottingham.edu.my', 'Shiyu Cao', 'BSc1013', 3),
+('20801522', 'edyhn2@nottingham.edu.my', 'Hao Yin Ng', 'BSc1007', 1),
+('20803979', 'hcyzt5@nottingham.edu.my', 'Zhiling Tang', 'BSc1008', 2),
+('20806299', 'hcydk2@nottingham.edu.my', 'Daniyal Khan', 'MEng1003', 3),
+('20806313', 'hcyyg3@nottingham.edu.my', 'Yutao Gao', 'BSc1008', 2),
+('20806377', 'hcykm1@nottingham.edu.my', 'Khalid Yousef Mohamad Shaker', 'BSc1008', 2),
+('20806629', 'hcyqy1@nottingham.edu.my', 'Qianqian Yang', 'MEng1001', 1),
+('20806655', 'hcyjl11@nottingham.edu.my', 'Junhao Li', 'BSc1012', 2),
+('20807491', 'hcyhs4@nottingham.edu.my', 'Hong Bin Soon', 'BSc1016', 1),
+('20809697', 'hcyzz4@nottingham.edu.my', 'Zexi Zhang', 'MEng1006', 3),
+('20809748', 'hcyzh1@nottingham.edu.my', 'Zhuohang He', 'BSc1010', 3),
+('20809859', 'hcyka4@nottingham.edu.my', 'Khizer Asim', 'BSc1010', 2),
+('20811743', 'hcyjc13@nottingham.edu.my', 'Jie Hui Chan', 'BSc1009', 2),
+('20811803', 'hcysk3@nottingham.edu.my', 'Shi Qi Koh', 'BSc1016', 1),
+('20812516', 'hcylp2@nottingham.edu.my', 'Lakshme Poo Balan', 'BSc1014', 3),
+('20814150', 'hcyqm1@nottingham.edu.my', 'Qoid Rafif Mohd Fadly', 'BSc1015', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `role` enum('admin','assessor') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `email`, `password`, `full_name`, `role`) VALUES
+(1, 'hfywl11@nottingham.edu.my', 'hfywl11@nottingham.edu.my', 'Loo Weiqi', 'admin'),
+(2, 'hfywl12@nottingham.edu.my', 'hfywl12@nottingham.edu.my', 'Lai Wing Yan', 'admin'),
+(3, 'hcyjw4@nottingham.edu.my', 'hcyjw4@nottingham.edu.my', 'Wong Jun Bin', 'admin'),
+(4, 'ChyeCheah.Tan@nottingham.edu.my', 'ChyeCheah.Tan@nottingham.edu.my', 'Dr Tan Chye Cheah', 'assessor'),
+(5, 'hcxwm1@nottingham.edu.my', 'hcxwm1@nottingham.edu.my', 'Ms Kelly Tan Kai Ling', 'assessor'),
+(6, 'hcymt2@nottingham.edu.my', 'hcymt2@nottingham.edu.my', 'Ms Chinthanika Nelummali Jayani Iddamaloda', 'assessor');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `assessments`
+--
+ALTER TABLE `assessments`
+  ADD PRIMARY KEY (`assessment_id`),
+  ADD UNIQUE KEY `internship_id` (`internship_id`);
+
+--
+-- Indexes for table `internships`
+--
+ALTER TABLE `internships`
+  ADD PRIMARY KEY (`internship_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `assessor_id` (`assessor_id`);
+
+--
+-- Indexes for table `programmes`
+--
+ALTER TABLE `programmes`
+  ADD PRIMARY KEY (`programme_id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`student_id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `programme_id` (`programme_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `assessments`
+--
+ALTER TABLE `assessments`
+  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `internships`
+--
+ALTER TABLE `internships`
+  MODIFY `internship_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `assessments`
+--
+ALTER TABLE `assessments`
+  ADD CONSTRAINT `assessments_ibfk_1` FOREIGN KEY (`internship_id`) REFERENCES `internships` (`internship_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `internships`
+--
+ALTER TABLE `internships`
+  ADD CONSTRAINT `internships_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`),
+  ADD CONSTRAINT `internships_ibfk_2` FOREIGN KEY (`assessor_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`programme_id`) REFERENCES `programmes` (`programme_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,23 @@
+Admin (Manager of System)
+        ↓
+Creates Assessor Accounts
+        ↓
+Assigns Students to Assessors
+        ↓
+Assessor Logs In
+        ↓
+Assessor Enters Marks
+-----------------------
+Admin Pages:
+
+> Add student
+> Edit student
+> Assign assessor
+> View all results
+-----------------------
+Assessor Pages:
+
+> Login
+> View assigned students
+> Enter marks
+> View result breakdown
