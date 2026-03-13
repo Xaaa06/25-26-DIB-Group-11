@@ -22,8 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['role'] = $user['role'];
 
-            // send user to portal page instead of old dashboard
-            header("Location: portal.php");
+            // send user to main page
+            header("Location: main.php");
             exit();
         } else {
             $message = "Invalid email or password!";
@@ -45,7 +45,7 @@ $conn->close();
     <title>University Internship Result Management Portal</title>
     <style>
         body {
-            background: url("homepageBackground.jpg");
+            background: url("/static/homepageBackground.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

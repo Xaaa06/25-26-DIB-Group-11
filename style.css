@@ -1,0 +1,144 @@
+/* Most classes have specified template
+main == been used in main.php, if not just general (JUN) */
+
+.background {
+    font-family: Arial, sans-serif;
+    background: #202020;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.main-title {
+    font-size: clamp(1.6rem, 3vw, 3rem);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.button-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+    padding: 0 5%;
+}
+
+
+.main-redirect {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: #FAA520;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    font-size: clamp(1.4rem, 2.5vw, 3rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.main-redirect:hover,
+.main-redirect:focus {
+    background-color: #2a2a2a;
+    transform: scale(1.03);
+}
+
+.main-bridge {
+    display: flex;
+    justify-content: center;
+    margin-top: 4vh;
+    padding: 0 4%;
+}
+
+.center-bridge {
+    width: 100vw;
+    max-width: none;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transform: translateY(80%) scale(0.8);
+    animation: popout 3.5s ease-out forwards;
+}
+
+.admin-role {
+    color: white;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 75px;
+    font-size: 40px;
+}
+
+.dashboard-table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.dashboard-td {
+    width: 25%;
+    padding: 10px;
+}
+
+.dashboard-box {
+    background: #215590;
+    color: white;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.dashboard-box:hover {
+    background: #2972c6;
+    transform: scale(1.05);
+}
+
+/*Animation below haven't been use (JUN)*/
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
+
+@keyframes popout {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+}
