@@ -28,7 +28,7 @@ if (strtolower($_SESSION['role'] ?? '') !== 'assessor') {
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #000000;">
         <div class="container-fluid">
             <a class="navbar-brand" href="main.php" style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 26px;">
-                DIB Group 12
+                DIB Group 11
             </a>
 
             <div class="collapse navbar-collapse" id="navbar">
