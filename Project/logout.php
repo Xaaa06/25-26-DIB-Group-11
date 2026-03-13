@@ -3,6 +3,7 @@
 session_start();
 session_destroy();
 
-header("Location: login.html");
+// send back to the login page (now index.php)
+header("Location: index.php");
 
 ?>

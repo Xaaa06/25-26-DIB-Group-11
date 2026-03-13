@@ -1,3 +1,42 @@
+<?php
+session_start();
+include 'config.php';
+
+$message = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    $stmt = $conn->prepare("SELECT user_id, full_name, role FROM users WHERE email = ? AND password = ?");
+
+    if ($stmt) {
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['full_name'] = $user['full_name'];
+            $_SESSION['role'] = $user['role'];
+
+            // send user to portal page instead of old dashboard
+            header("Location: portal.php");
+            exit();
+        } else {
+            $message = "Invalid email or password!";
+        }
+
+        $stmt->close();
+    } else {
+        $message = "Database query error.";
+    }
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +46,14 @@
     <style>
         body {
             background: url("homepageBackground.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             font-family: 'Playfair Display', serif;
             margin: 0;
             padding: 0;
             color: #333;
+            min-height: 100vh;
         }
 
         .container {
@@ -37,12 +80,14 @@
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 8px;
+            box-sizing: border-box;
         }
 
         button {
             background-color: #00274e;
             color: white;
             cursor: pointer;
+            border: none;
         }
 
         button:hover {
@@ -62,10 +107,21 @@
             margin-top: 30px;
         }
 
-        footer {
+        .message {
             text-align: center;
-            margin-top: 40px;
-            color: white;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
         }
     </style>
 </head>
@@ -74,12 +130,17 @@
 
 <div class="container">
     <h2>University Internship Result Portal</h2>
-    <!-- Login Form -->
+    <?php if ($message): ?>
+        <div class="message <?php echo strpos($message, 'successful') !== false ? 'success' : 'error'; ?>">
+            <?php echo htmlspecialchars($message); ?>
+        </div>
+    <?php endif; ?>
+
     <div id="loginContainer">
-        <form id="loginForm" method="POST">
+        <form id="loginForm" method="post" action="">
             <div class="input-container">
-                <input type="email" name="email" placeholder="Enter Email Address" required>
-                <input type="password" name="password" placeholder="Enter Password" required>
+                <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
             </div>
             <button type="submit">Log In</button>
             <button type="button" class="cancel-btn" onclick="cancelLogin()">Cancel</button>
@@ -87,23 +148,7 @@
     </div>
 </div>
 
-<footer>
-    <p>© 2026 Internship Result Management System</p>
-</footer>
-
 <script>
-
-function validateLogin() {
-    const form = document.getElementById("loginForm");
-
-    if (form.checkValidity()) {
-        alert("Login Successful!");
-        return true;
-    } else {
-        alert("Please fill in all required fields!");
-        return false;
-    }
-}
 function cancelLogin() {
     const form = document.getElementById("loginForm");
     form.reset();
