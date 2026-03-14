@@ -154,22 +154,3 @@ INSERT INTO internships (student_id, assessor_id, company_name, start_date, end_
 ('20811803',6,'Microsoft','2026-06-15','2026-09-15'),
 ('20812516',6,'Google','2026-07-01','2026-11-01'),
 ('20814150',6,'Amazon','2026-07-10','2026-10-10');
-
-INSERT INTO assessments 
-(internship_id, undertaking_tasks, health_safety, theory_use, report_presentation, language_clarity, lifelong_learning, project_management, time_management, final_score, comments)
-VALUES
-
-(1, 85.50, 88.00, 82.75, 86.25, 84.00, 87.50, 83.00, 89.00, 85.50,
-'The student demonstrated strong professional competence throughout the internship period. Responsibilities were handled efficiently with clear understanding of theoretical knowledge and practical application. Communication skills were effective, and time management was consistent. The student showed initiative, adaptability, and willingness to learn, contributing positively to the organization and overall project outcomes.'),
-
-(2, 78.00, 80.50, 76.25, 82.00, 79.50, 81.00, 77.75, 83.00, 79.75,
-'The student performed duties satisfactorily and maintained professional standards during the internship. Assigned tasks were completed responsibly with adequate understanding of workplace expectations. Communication and presentation skills were clear and structured. The student demonstrated steady progress, reliability, and a positive attitude toward continuous improvement and collaboration with team members.'),
-
-(3, 90.00, 92.50, 88.75, 91.00, 89.50, 93.00, 87.50, 90.25, 90.81,
-'An excellent performance was observed throughout the internship duration. The student consistently applied theoretical knowledge effectively in practical situations and maintained high standards in communication and reporting. Strong analytical skills, leadership potential, and efficient time management were evident. The student contributed meaningfully to projects and exceeded expectations in professional conduct.'),
-
-(4, 74.50, 76.00, 72.25, 78.00, 75.00, 79.50, 73.75, 77.00, 75.00,
-'The student showed satisfactory competency in fulfilling assigned responsibilities and maintained appropriate workplace behavior. Tasks were completed with reasonable understanding and attention to detail. Communication skills were clear, and collaboration with colleagues was positive. Continued development in analytical depth and independent problem solving is encouraged for future professional growth.'),
-
-(5, 88.00, 85.75, 84.50, 89.25, 87.00, 90.00, 86.25, 88.50, 87.91,
-'The student demonstrated high commitment and strong capability in executing internship responsibilities. Work quality was consistent, with effective application of theoretical knowledge to real-world scenarios. Communication, presentation, and organizational skills were well developed. The student exhibited professionalism, initiative, and a proactive approach toward learning and continuous improvement.');
